@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-12-29T01:32:28.473Z" agent="5.0 (Windows)" etag="cL97wP2xgbNRTCTe2IwQ" version="14.1.2" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-29T01:33:19.752Z" agent="5.0 (Windows)" etag="Xb0BfFDfj1EFA31l5_SR" version="14.1.2" type="github">
   <diagram name="Page-1" id="b5b7bab2-c9e2-2cf4-8b2a-24fd1a2a6d21">
     <mxGraphModel dx="863" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
@@ -17,7 +17,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fH06l1myDt46P4Em8P1J-11" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" parent="j2p-cH8XqQ2ZMisPOmYl-4" vertex="1">
+        <mxCell id="fH06l1myDt46P4Em8P1J-11" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;shape=mxgraph.azure.user;fillColor=#505050;" parent="j2p-cH8XqQ2ZMisPOmYl-4" vertex="1">
           <mxGeometry x="22.5" width="47.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="fH06l1myDt46P4Em8P1J-12" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" parent="j2p-cH8XqQ2ZMisPOmYl-4" vertex="1">
@@ -32,7 +32,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="fH06l1myDt46P4Em8P1J-13" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;fillColor=#00BEF2;shape=mxgraph.azure.user;" parent="j2p-cH8XqQ2ZMisPOmYl-4" vertex="1">
+        <mxCell id="fH06l1myDt46P4Em8P1J-13" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;shape=mxgraph.azure.user;fillColor=#505050;" parent="j2p-cH8XqQ2ZMisPOmYl-4" vertex="1">
           <mxGeometry x="132.5" width="47.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="j2p-cH8XqQ2ZMisPOmYl-8" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.503;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="j2p-cH8XqQ2ZMisPOmYl-4" source="fH06l1myDt46P4Em8P1J-13">
@@ -77,6 +77,9 @@
         </mxCell>
         <mxCell id="j2p-cH8XqQ2ZMisPOmYl-54" value="&lt;div&gt;- AWS lambda functions&lt;/div&gt;&lt;div&gt;- Continuous Integration&lt;/div&gt;&lt;div&gt;- Serverless&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="j2p-cH8XqQ2ZMisPOmYl-4">
           <mxGeometry x="251" y="180.00000000000006" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="j2p-cH8XqQ2ZMisPOmYl-83" value="" style="verticalLabelPosition=bottom;html=1;verticalAlign=top;align=center;strokeColor=none;shape=mxgraph.azure.user;fillColor=#505050;" vertex="1" parent="j2p-cH8XqQ2ZMisPOmYl-4">
+          <mxGeometry x="242.5" width="47.5" height="50" as="geometry" />
         </mxCell>
         <mxCell id="j2p-cH8XqQ2ZMisPOmYl-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="j2p-cH8XqQ2ZMisPOmYl-34" target="fH06l1myDt46P4Em8P1J-6">
           <mxGeometry relative="1" as="geometry">
