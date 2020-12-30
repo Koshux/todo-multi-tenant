@@ -6,10 +6,14 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "netlify-lambda": "^2.0.2",
+    "nodemon": "^2.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
+    "serverless-http": "^2.6.0",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -18,8 +22,13 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:lambda": "netlify-lambda serve functions/todo-api",
+    "install:lambda": "netlify-lambda install functions/todo-api",
     "build:lambda": "netlify-lambda build functions/todo-api",
-    "build:app": "react-scripts build && netlify-lambda build functions/todo-api"
+    "build:express": "netlify-lambda build express",
+    "start:express": "nodemon server-local.js",
+    "postinstall": "netlify-lambda install",
+    "start:app": "react-scripts start netlify-lambda install functions/todo-api",
+    "build:app": "react-scripts build netlify-lambda build functions/todo-api"
   },
   "eslintConfig": {
     "extends": [
