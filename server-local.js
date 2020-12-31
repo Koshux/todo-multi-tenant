@@ -1,7 +1,7 @@
 'use strict'
 
-const app = require('./express/server')
-
-app.listen(3000, () => {
-  console.log('Started Netlify-ExpressJS app on Port 3000!')
+const app = require('./functions/todo-api/server')
+const port = 4000
+app.listen(port, () => {
+  console.log(`Started Netlify-ExpressJS app on Port ${port}!`)
 })

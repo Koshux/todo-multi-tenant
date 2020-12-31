@@ -10,6 +10,7 @@
     "express": "^4.17.1",
     "netlify-lambda": "^2.0.2",
     "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -17,18 +18,15 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm-run-all --parallel start:app start:lambda",
+    "start:app": "react-scripts start",
+    "start:lambda": "netlify-lambda serve functions/todo-api",
+    "build": "npm-run-all --parallel build:**",
+    "build:app": "react-scripts build",
+    "build:lambda": "netlify-lambda build functions/todo-api",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start:lambda": "netlify-lambda serve functions/todo-api",
-    "install:lambda": "netlify-lambda install functions/todo-api",
-    "build:lambda": "netlify-lambda build functions/todo-api",
-    "build:express": "netlify-lambda build express",
-    "start:express": "nodemon server-local.js",
-    "postinstall": "netlify-lambda install",
-    "start:app": "react-scripts start netlify-lambda install functions/todo-api",
-    "build:app": "react-scripts build netlify-lambda build functions/todo-api"
+    "postinstall": "netlify-lambda install functions/todo-api"
   },
   "eslintConfig": {
     "extends": [

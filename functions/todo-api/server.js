@@ -1,24 +1,30 @@
 'use strict'
 
 const express = require('express')
-const path = require('path')
 const serverless = require('serverless-http')
 const app = express()
 const bodyParser = require('body-parser')
 
 const router = express.Router()
 
-router.use(bodyParser.json())
+router.get('/', (req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' })
+  res.write('<h1>Hello from Express.js!</h1>')
+  res.end()
+})
+
 router.get('/todo', (req, res) => {
   res.json(getData())
 })
 
 app.use(bodyParser.json())
-app.use('/.netlify/functions/lambda', router) // path must route to lambda.
+app.use('/.netlify/functions/server', router) // path must route to lambda.
 
 function getData () {
   console.log('getData was called from GET /todo.')
-  return 'Gotcha!'
+  return {
+    'hello': 'Gotcha!'
+  }
 }
 
 module.exports = app
