@@ -1,8 +1,15 @@
 'use strict'
 
-const mongoose = require('mongoose')
+// load .env file.
+require('dotenv').config()
 
-const noteSchema = mongoose.Schema({
+const mongoose = require('mongoose')
+const connection = mongoose.createConnection(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+
+const NoteSchema = mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -17,4 +24,5 @@ const noteSchema = mongoose.Schema({
   }
 })
 
-let Note = module.exports = mongoose.model('Note', noteSchema)
+const note = connection.model('Note', NoteSchema)
+module.exports = connection

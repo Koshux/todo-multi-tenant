@@ -1,7 +1,10 @@
 'use strict'
 
+// load .env file.
+require('dotenv').config()
+
 const mongoose = require('mongoose')
-const connection = mongoose.connection(process.env.MONGODB_URL, {
+const connection = mongoose.createConnection(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

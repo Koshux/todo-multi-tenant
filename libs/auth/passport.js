@@ -2,12 +2,12 @@
 
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const User = require('../models/user')
+const { User } = require('../models/user').models
 const { validPassword } = require('../auth/password-utils')
 
 const customFields = {
-  usernameField = 'username',
-  passwordField = 'password'
+  usernameField: 'username',
+  passwordField: 'password'
 }
 
 const verifyCb = (username, password, done) => {

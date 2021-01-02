@@ -1,6 +1,6 @@
 'use strict'
 
-const Note = require('../models/note')
+const { Note } = require('../models/note').models
 const { isAuth } = require('../auth/middleware')
 
 function updateRoute (router) {

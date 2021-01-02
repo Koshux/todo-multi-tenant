@@ -1,8 +1,5 @@
 'use strict'
 
-// load .env file.
-require('dotenv').config()
-
 const bodyParser = require('body-parser')
 const express = require('express')
 const serverless = require('serverless-http')

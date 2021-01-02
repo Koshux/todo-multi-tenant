@@ -2,25 +2,16 @@
 
 const passport = require('passport')
 
-function userRoute (app, router) {
+function userRoute (app) {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  app.use('/users', router)
-  app.use(auth)
-}
+  app.use((req, res, next) => {
+    console.log('Session:', req.session)
+    console.log('User:', req.user)
 
-function auth (req, res, next) {
-  console.log('User found:', req.session)
-  console.log('User found:', req.user)
-
-  if (!req.user) {
-    const err = new Error('You are not authenticated.')
-    err.status = 403
-    next(err)
-  } else {
     next()
-  }
+  })
 }
 
 module.exports = userRoute
