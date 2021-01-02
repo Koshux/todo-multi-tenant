@@ -30,7 +30,7 @@ const router = express.Router()
 db.on('open', () => {
   console.log('Established connection with MongoDB.')
 
-  setupRoutes(router)
+  setupRoutes(app, router)
   app.use(bodyParser.json())
 
   // Path must route to lambda-functions (compiled netlify functions folder).
