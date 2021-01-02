@@ -1,6 +1,7 @@
 'use strict'
 
 const Note = require('../models/note')
+const { isAuth } = require('../auth/middleware')
 
 function readRoute (router) {
   findOneRoute(router)
@@ -8,7 +9,7 @@ function readRoute (router) {
 }
 
 function findOneRoute (router) {
-  router.get('/todo/:title', (req, res, next) => {
+  router.get('/todo/:title', isAuth, (req, res, next) => {
     Note.find({ title: req.params.title }, (err, note) => {
       if (err) {
         next(err)
@@ -24,7 +25,7 @@ function findOneRoute (router) {
 }
 
 function findAllRoute (router) {
-  router.get('/todo', (req, res, next) => {
+  router.get('/todo', isAuth, (req, res, next) => {
     Note.find({}, (err, notes) => {
       if (err) {
         next(err)

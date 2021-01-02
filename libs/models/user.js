@@ -1,14 +1,17 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const userSchema = new Schema({
-  admin: {
-    type: Boolean,
-    default: false
-  }
+const connection = mongoose.connection(process.env.MONGODB_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
 
-User.plugin(require('passport-local-mongoose'))
+const UserSchema = new mongoose.Schema({
+  username: String,
+  hash: String,
+  salt: String,
+  admin: Boolean
+})
 
-module.exports = mongoose.model('User', userSchema)
+const user = connection.model('User', UserSchema)
+module.exports = connection

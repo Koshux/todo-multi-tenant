@@ -1,9 +1,10 @@
 'use strict'
 
 const Note = require('../models/note')
+const { isAuth } = require('../auth/middleware')
 
 function createRoute (router) {
-  router.post('/todo', (req, res, next) => {
+  router.post('/todo', isAuth, (req, res, next) => {
     const { author, date, title} = req.body.data
     const data = { author, date, title }
     Note.save(data, (err, note) => {

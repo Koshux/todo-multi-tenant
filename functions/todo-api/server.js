@@ -3,41 +3,43 @@
 // load .env file.
 require('dotenv').config()
 
-const express = require('express')
 const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
+const express = require('express')
 const serverless = require('serverless-http')
+const session = require('express-session')
 const setupRoutes = require('../../libs/routes/index')
+const userConnection = require('../../libs/models/user')
 
-const mongoOptions = {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  autoIndex: true,
-  poolSize: 10,
-  bufferMaxEntries: 0,
-  connectTimeoutMS: 10000,
-  socketTimeoutMS: 30000,
-}
-
-mongoose.connect(process.env.MONGODB_URL, mongoOptions)
-
+const MongoStore = require('connect-mongo')(session)
 const app = express()
-const db = mongoose.connection
 const router = express.Router()
 
-db.on('open', () => {
-  console.log('Established connection with MongoDB.')
+app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }))
 
-  setupRoutes(app, router)
-  app.use(bodyParser.json())
-
-  // Path must route to lambda-functions (compiled netlify functions folder).
-  app.use('/.netlify/functions/server', router)
+const sessionStore = new MongoStore({
+  mongooseConnection: userConnection,
+  collection: 'sessions'
 })
 
-db.on('error', () => console.error.bind(console, 'connection error:'))
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true,
+  store: sessionStore,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  }
+}))
+
+// Require the entire Passport module for node to initialise the code.
+require('../../libs/auth/passport')
+
+// Setup the ExpressJS routes.
+setupRoutes(app, router)
+
+// Path must route to lambda-functions (compiled netlify functions folder).
+app.use('/.netlify/functions/server', router)
 
 module.exports = app
 module.exports.handler = serverless(app)

@@ -1,9 +1,10 @@
 'use strict'
 
 const Note = require('../models/note')
+const { isAuth } = require('../auth/middleware')
 
 function updateRoute (router) {
-  router.put('/todo/:title', (req, res, next) => {
+  router.put('/todo/:title', isAuth, (req, res, next) => {
     const { body, date } = req.body
     const data = { body, date, title: req.params.title }
     Note.update(data, (err, note) => {

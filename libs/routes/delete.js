@@ -1,9 +1,10 @@
 'use strict'
 
 const Note = require('../models/note')
+const { isAuth } = require('../auth/middleware')
 
 function deleteRoute (router) {
-  router.delete('/todo/:title', (req, res, next) => {
+  router.delete('/todo/:title', isAuth, (req, res, next) => {
     Note.delete({ title: req.params.title }, (err, note) => {
       if (err) {
         next(err)
