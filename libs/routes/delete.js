@@ -2,11 +2,7 @@
 
 const Note = require('../models/note')
 
-function deleteNote (router) {
-  setupRoute(router)
-}
-
-function setupRoute (router) {
+function deleteRoute (router) {
   router.delete('/todo/:title', (req, res, next) => {
     Note.delete({ title: req.params.title }, (err, note) => {
       if (err) {
@@ -22,4 +18,4 @@ function setupRoute (router) {
   })
 }
 
-module.exports = deleteNote
+module.exports = deleteRoute

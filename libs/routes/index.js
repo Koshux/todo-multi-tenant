@@ -1,15 +1,16 @@
 'use strict'
 
-const createNote = require('./create')
-const deleteNote = require('./delete')
-const readNote = require('./read')
-const updateNote = require('./update')
+const createRoute = require('./create')
+const deleteRoute = require('./delete')
+const readRoute = require('./read')
+const updateRoute = require('./update')
 
 function setupRoutes (router) {
-  createNote(router)
-  deleteNote(router)
-  readNote(router)
-  updateNote(router)
+  defaultRoute(router)
+  createRoute(router)
+  deleteRoute(router)
+  readRoute(router)
+  updateRoute(router)
 }
 
 module.exports = setupRoutes

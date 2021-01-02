@@ -2,11 +2,7 @@
 
 const Note = require('../models/note')
 
-function updateNote (router) {
-  setupRoute(router)
-}
-
-function setupRoute (router) {
+function updateRoute (router) {
   router.put('/todo/:title', (req, res, next) => {
     const { body, date } = req.body
     const data = { body, date, title: req.params.title }
@@ -24,4 +20,4 @@ function setupRoute (router) {
   })
 }
 
-module.exports = updateNote
+module.exports = updateRoute

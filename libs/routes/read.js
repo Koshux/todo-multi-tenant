@@ -2,16 +2,12 @@
 
 const Note = require('../models/note')
 
-function findNotes (router) {
-  setupRoutes(router)
+function readRoute (router) {
+  findOneRoute(router)
+  findAllRoute(router)
 }
 
-function setupRoutes (router) {
-  findOne(router)
-  findAll(router)
-}
-
-function findOne (router) {
+function findOneRoute (router) {
   router.get('/todo/:title', (req, res, next) => {
     Note.find({ title: req.params.title }, (err, note) => {
       if (err) {
@@ -27,7 +23,7 @@ function findOne (router) {
   })
 }
 
-function findAll (router) {
+function findAllRoute (router) {
   router.get('/todo', (req, res, next) => {
     Note.find({}, (err, notes) => {
       if (err) {
@@ -43,4 +39,4 @@ function findAll (router) {
   })
 }
 
-module.exports = findNotes
+module.exports = readRoute
