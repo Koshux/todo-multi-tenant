@@ -1,6 +1,7 @@
 'use strict'
 
 const createRoute = require('./create')
+const defaultRoute = require('./default')
 const deleteRoute = require('./delete')
 const readRoute = require('./read')
 const updateRoute = require('./update')
