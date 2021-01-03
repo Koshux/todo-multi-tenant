@@ -41,20 +41,6 @@ function loginRoute (router) {
     failureRedirect: '/.netlify/functions/server/register',
     successRedirect: '/.netlify/functions/server/todo'
   }))
-  // router.post('/login', (req, res, next) => {
-  //   console.log('req.body:', req.body)
-  //   passport.authenticate('local', (err, user, info) => {
-  //     console.log('error:', err)
-  //     console.log('user:', req.user)
-  //     console.log('info:', info)
-  //     if (err) return next(err)
-  //     if (!user) return res.redirect('/.netlify/functions/server/register')
-  //     req.logIn(user, err => {
-  //       if (err) return next(err)
-  //       return res.redirect('/.netlify/functions/server/todo')
-  //     })
-  //   })(req, res, next)
-  // })
 }
 
 function logoutRoute (router) {
