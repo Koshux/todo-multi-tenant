@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-01-03T12:51:28.546Z" agent="5.0 (Windows)" etag="ORs_TIIjIRhTbI0EtiSX" version="14.1.4" type="github" pages="3">
+<mxfile host="app.diagrams.net" modified="2021-01-03T12:53:10.948Z" agent="5.0 (Windows)" etag="7kb2QE01D_BT6g456YAN" version="14.1.4" type="github" pages="4">
   <diagram id="JGnoUJ59wjyyUFprVWpa" name="Login Page">
     <mxGraphModel dx="1422" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -16,7 +16,7 @@
         <mxCell id="VI6_glTV6cUCQyx0rmu6-1" value="&lt;div align=&quot;left&quot;&gt;TODO&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;Your personal notes in one place&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;fontFamily=BitterPro-ExtraBoldItalic;" vertex="1" parent="V4Uo2bG0KVkIkWlAtBhy-1">
           <mxGeometry x="120" y="160" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="VI6_glTV6cUCQyx0rmu6-8" value="&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot; face=&quot;BitterPro-BoldItalic&quot;&gt;&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot; face=&quot;BitterPro-BoldItalic&quot;&gt;Go&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;align=center;fontSize=14;fillColor=none;" vertex="1" parent="V4Uo2bG0KVkIkWlAtBhy-1">
+        <mxCell id="VI6_glTV6cUCQyx0rmu6-8" value="&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot; face=&quot;BitterPro-BoldItalic&quot;&gt;&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot; face=&quot;BitterPro-BoldItalic&quot;&gt;Login&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;align=center;fontSize=14;fillColor=none;" vertex="1" parent="V4Uo2bG0KVkIkWlAtBhy-1">
           <mxGeometry width="160" height="130" relative="1" as="geometry">
             <mxPoint x="470" y="420" as="offset" />
           </mxGeometry>
@@ -45,6 +45,59 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="VI6_glTV6cUCQyx0rmu6-6" value="" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=none;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="VI6_glTV6cUCQyx0rmu6-9">
+          <mxGeometry width="390" height="30" relative="1" as="geometry">
+            <mxPoint y="140" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Registration Page" id="Svmri_1hcio-CHzQl6Ei">
+    <mxGraphModel dx="1422" dy="763" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-0" />
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-1" parent="u-cWuaGov4FpUGVQ7J2k-0" />
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-2" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.browserWindow;rSize=0;strokeColor=#666666;strokeColor2=#008cff;strokeColor3=#c4c4c4;mainText=,;recursiveResize=0;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-1">
+          <mxGeometry x="70" y="50" width="650" height="630" as="geometry" />
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-3" value="Page 1" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.anchor;fontSize=17;fontColor=#666666;align=left;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-2">
+          <mxGeometry x="60" y="12" width="110" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-4" value="https://www.todo-app-lp.netlify.app/register" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.containers.anchor;rSize=0;fontSize=17;fontColor=#666666;align=left;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-2">
+          <mxGeometry x="130" y="60" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-5" value="&lt;div align=&quot;left&quot;&gt;TODO&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 16px&quot;&gt;Your personal notes in one place&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;fontFamily=BitterPro-ExtraBoldItalic;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-2">
+          <mxGeometry x="120" y="160" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-6" value="&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot; face=&quot;BitterPro-BoldItalic&quot;&gt;&amp;gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot; face=&quot;BitterPro-BoldItalic&quot;&gt;Register&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;strokeColor=none;align=center;fontSize=14;fillColor=none;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-2">
+          <mxGeometry width="160" height="130" relative="1" as="geometry">
+            <mxPoint x="470" y="420" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-7" value="" style="group" vertex="1" connectable="0" parent="u-cWuaGov4FpUGVQ7J2k-2">
+          <mxGeometry x="60" y="380" width="390" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-8" value="Username" style="fillColor=none;strokeColor=none;align=left;fontSize=14;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-7">
+          <mxGeometry width="260" height="40" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-9" value="" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=none;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-7">
+          <mxGeometry width="390" height="30" relative="1" as="geometry">
+            <mxPoint y="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-10" value="You will be redirected to the login page once you register." style="fillColor=none;strokeColor=none;align=left;spacing=2;fontSize=12;fontColor=#999999;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-7">
+          <mxGeometry width="390" height="30" relative="1" as="geometry">
+            <mxPoint y="70" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-11" value="Password" style="fillColor=none;strokeColor=none;align=left;fontSize=14;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-7">
+          <mxGeometry width="260" height="40" relative="1" as="geometry">
+            <mxPoint y="100" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u-cWuaGov4FpUGVQ7J2k-12" value="" style="html=1;shadow=0;dashed=0;shape=mxgraph.bootstrap.rrect;rSize=5;fillColor=none;strokeColor=#999999;align=left;spacing=15;fontSize=14;fontColor=#6C767D;" vertex="1" parent="u-cWuaGov4FpUGVQ7J2k-7">
           <mxGeometry width="390" height="30" relative="1" as="geometry">
             <mxPoint y="140" as="offset" />
           </mxGeometry>
