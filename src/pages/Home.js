@@ -1,7 +1,7 @@
 import React from 'react'
 import auth from '../components/auth'
 
-export const HomePage = (props) => {
+export default function HomePage (props) {
   return (
     <div>
       Home Page
@@ -12,7 +12,7 @@ export const HomePage = (props) => {
           })
         }}
       >
-        Login
+        Logout
       </button>
     </div>
   )

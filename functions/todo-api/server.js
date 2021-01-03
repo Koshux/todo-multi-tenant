@@ -1,5 +1,6 @@
 'use strict'
 
+const bodyParser = require('body-parser')
 const express = require('express')
 const serverless = require('serverless-http')
 const session = require('express-session')
@@ -10,6 +11,7 @@ const MongoStore = require('connect-mongo')(session)
 const app = express()
 const router = express.Router()
 
+app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }))
 
 const sessionStore = new MongoStore({
@@ -28,6 +30,7 @@ app.use(session({
 }))
 
 // Require the entire Passport module for node to initialise the code.
+require('../../libs/proxy')(app)
 require('../../libs/auth/passport')
 
 // Setup the ExpressJS routes.

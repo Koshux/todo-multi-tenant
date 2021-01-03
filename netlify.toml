@@ -2,3 +2,31 @@
   command = "npm run build"
   functions = "lambda-functions"
   publish = "build"
+
+[[redirects]]
+  from = "/api/login"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/loginUser"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/api/logout"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/logoutUser"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/api/register"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/registerUser"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/api/todo"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/todo"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}

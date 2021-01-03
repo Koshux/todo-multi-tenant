@@ -1,7 +1,7 @@
 import React from 'react'
 import auth from '../components/auth'
 
-export const LoginPage = (props) => {
+export default function LoginPage (props) {
   return (
     <div>
       Login Page

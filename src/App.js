@@ -1,5 +1,4 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
 import {
   Link,
   Route,
@@ -15,10 +14,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+        {/* <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
@@ -27,7 +26,7 @@ function App() {
               <Link to="/register">Register</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <Switch>
           <ProtectedRoute
@@ -47,7 +46,7 @@ function App() {
           />
           <Route
             path="*"
-            component={() => "404 - Page Not Found."}
+            component={() => "404 - Page Not Found"}
           />
         </Switch>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const homePage = () => {
+export default function RegisterPage (props) {
   return (
     <div>
       Register Page
