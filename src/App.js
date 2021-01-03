@@ -9,6 +9,7 @@ import {
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import ProtectedRoute from './components/protected-route'
 
 function App() {
   return (
@@ -29,9 +30,25 @@ function App() {
         </nav>
 
         <Switch>
-          <Route path="/" exact component={ Home } />
-          <Route path="/login" exact component={ Login } />
-          <Route path="/register" exact component={ Register } />
+          <ProtectedRoute
+            component={Home}
+            exact
+            path="/home"
+          />
+          <Route
+            component={ Login }
+            exact
+            path="/login"
+          />
+          <Route
+            component={ Register }
+            exact
+            path="/register"
+          />
+          <Route
+            path="*"
+            component={() => "404 - Page Not Found."}
+          />
         </Switch>
       </div>
     </Router>
