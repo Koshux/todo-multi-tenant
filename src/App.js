@@ -33,6 +33,7 @@ function App() {
             component={Home}
             exact
             path="/home"
+            redirect="/"
           />
           <Route
             component={ Login }

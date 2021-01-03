@@ -30,7 +30,6 @@ app.use(session({
 }))
 
 // Require the entire Passport module for node to initialise the code.
-require('../../libs/proxy')(app)
 require('../../libs/auth/passport')
 
 // Setup the ExpressJS routes.

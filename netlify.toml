@@ -3,37 +3,37 @@
   functions = "lambda-functions"
   publish = "build"
 
-[[redirects]]
-  from = "/api/login"
-  to = "http://localhost:9000/.netlify/functions/server/login"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+# [[redirects]]
+#   from = "/api/login"
+#   to = "http://localhost:9000/.netlify/functions/server/login"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}
 
-[[redirects]]
-  from = "/api/login"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/login"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+# [[redirects]]
+#   from = "/api/login"
+#   to = "https://todo-app-lp.netlify.app/.netlify/functions/server/login"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}
 
-[[redirects]]
-  from = "/api/logout"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/logout"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+# [[redirects]]
+#   from = "/api/logout"
+#   to = "https://todo-app-lp.netlify.app/.netlify/functions/server/logout"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}
 
-[[redirects]]
-  from = "/api/register"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/register"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+# [[redirects]]
+#   from = "/api/register"
+#   to = "https://todo-app-lp.netlify.app/.netlify/functions/server/register"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}
 
-[[redirects]]
-  from = "/api/todo"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/todo"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
+# [[redirects]]
+#   from = "/api/todo"
+#   to = "https://todo-app-lp.netlify.app/.netlify/functions/server/todo"
+#   status = 200
+#   force = true
+#   headers = {X-From = "Netlify"}

@@ -39,14 +39,14 @@ function registerPage (router) {
 function loginRoute (router) {
   router.post('/login', passport.authenticate('local', {
     failureRedirect: '/.netlify/functions/server/register',
-    successRedirect: '/.netlify/functions/server/todo'
+    successRedirect: '/home'
   }))
 }
 
 function logoutRoute (router) {
   router.get('/logout', (req, res) => {
     req.logout()
-    res.redirect('/.netlify/functions/server')
+    res.redirect('/')
   })
 }
 
@@ -66,7 +66,7 @@ function registerRoute (router) {
       console.error(err)
     })
 
-    res.redirect('/.netlify/functions/server/login')
+    res.redirect('/')
   })
 }
 
