@@ -5,21 +5,28 @@
 
 [[redirects]]
   from = "/api/login"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/loginUser"
+  to = "http://localhost:9000/.netlify/functions/server/login"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/api/login"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/login"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
 
 [[redirects]]
   from = "/api/logout"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/logoutUser"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/logout"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
 
 [[redirects]]
   from = "/api/register"
-  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/registerUser"
+  to = "https://todo-app-lp.netlify.app/.netlify/functions/server/register"
   status = 200
   force = true
   headers = {X-From = "Netlify"}

@@ -37,7 +37,7 @@ function App() {
           <Route
             component={ Login }
             exact
-            path="/login"
+            path="/"
           />
           <Route
             component={ Register }

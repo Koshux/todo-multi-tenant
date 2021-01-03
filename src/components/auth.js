@@ -4,8 +4,16 @@ class Auth {
   }
 
   login (cb) {
-    this.authenticated = true
-    cb()
+    fetch('/api/login')
+      .then(resp => resp.json)
+      .then(data => {
+
+        this.authenticated = true
+        cb()
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 
   logout (cb) {

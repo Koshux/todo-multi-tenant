@@ -8,7 +8,7 @@ export default function HomePage (props) {
       <button
         onClick={() => {
           auth.logout(() => {
-            props.history.push('/login')
+            props.history.push('/')
           })
         }}
       >
