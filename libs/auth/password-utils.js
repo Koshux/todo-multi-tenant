@@ -22,8 +22,10 @@ function generatePassword (password) {
  * @param {String} salt
  * @param {String} hash
  */
-function validPassword (password, salt, hash) {
+function validPassword (password, hash, salt) {
   const hashVerify = hashGenerator(password, salt)
+  console.log('hash 1:', hash)
+  console.log('hash 2:', hashVerify)
   return hash === hashVerify
 }
 
