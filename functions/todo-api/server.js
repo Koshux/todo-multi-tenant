@@ -2,6 +2,7 @@
 
 const bodyParser = require('body-parser')
 const express = require('express')
+const path = require('path')
 const serverless = require('serverless-http')
 const session = require('express-session')
 const setupRoutes = require('../../libs/routes/index')

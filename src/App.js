@@ -14,26 +14,11 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <nav>
-          <ul>
-            <li>
-              <Link to="/home">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </ul>
-        </nav> */}
-
         <Switch>
           <ProtectedRoute
             component={Home}
             exact
             path="/home"
-            redirect="/"
           />
           <Route
             component={ Login }

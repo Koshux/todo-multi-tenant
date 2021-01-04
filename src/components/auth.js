@@ -5,20 +5,17 @@ class Auth {
 
   login (cb) {
     const options = {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify({ username: 'roger', password: '123' }) // body data type must match "Content-Type" header
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify({ username: 'roger2', password: '123' })
     }
 
-    fetch('/server/login', options)
+    fetch('/.netlify/functions/server/login', options)
       .then(resp => resp.json())
       .then(data => {
         console.log('login data', data)
@@ -31,11 +28,35 @@ class Auth {
   }
 
   logout (cb) {
-    fetch('/server/logout')
+    fetch('/.netlify/functions/server/logout')
       .then(resp => resp.json())
       .then(data => {
         console.log('logout data', data)
         this.authenticated = false
+        cb()
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
+  register (cb) {
+    const options = {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify({ username: 'roger', password: '123' })
+    }
+
+    fetch('/.netlify/functions/server/register', options)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log('register data', data)
+        this.authenticated = true
         cb()
       })
       .catch(err => {
