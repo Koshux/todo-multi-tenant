@@ -8,48 +8,36 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-const theme = createMuiTheme({
-  overrides: {
-    MuiTypography: {
-      h1: {
-        'font-family': 'BitterPro'
-      }
-    }
-  }
-})
 
 function App() {
   return (
     <Router>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Container minWidth="sm" className="background">
-          {/* <div className="App"> */}
-            <Switch>
-              <ProtectedRoute
-                component={Home}
-                exact
-                path="/home"
-              />
-              <Route
-                component={ Login }
-                exact
-                path="/"
-              />
-              <Route
-                component={ Register }
-                exact
-                path="/register"
-              />
-              <Route
-                path="*"
-                component={() => "404 - Page Not Found"}
-              />
-            </Switch>
-          {/* </div> */}
-        </Container>
-      </ThemeProvider>
+      <CssBaseline />
+      <Container minwidth="sm" className="background">
+        {/* <div className="App"> */}
+          <Switch>
+            <ProtectedRoute
+              component={Home}
+              exact
+              path="/home"
+            />
+            <Route
+              component={ Login }
+              exact
+              path="/"
+            />
+            <Route
+              component={ Register }
+              exact
+              path="/register"
+            />
+            <Route
+              path="*"
+              component={() => "404 - Page Not Found"}
+            />
+          </Switch>
+        {/* </div> */}
+      </Container>
     </Router>
   )
 }

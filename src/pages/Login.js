@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+  button: {
+    marginTop: '1em'
+  },
   paper: {
-    marginTop: '15vh',
-    marginLeft: '40vh',
-    marginRight: '40vh',
-    height: '30vh',
+    marginTop: '10em',
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
@@ -33,21 +33,31 @@ export default function LoginPage (props) {
 
   return (
     <React.Fragment>
-      <Typography variant="h1">
-        TODO
-      </Typography>
-
-      <Typography variant="subtitle2">
-        Your personal productivity zone.
-      </Typography>
 
       <div className={classes.root}>
-        <Grid container spacing={1}>
+        <Grid
+          container
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '80vh' }}
+        >
+          <Grid item xs={12} >
+            <Typography variant="h1">
+              TODOit
+            </Typography>
+
+            <Typography variant="subtitle2" align="center">
+              Your personal productivity zone.
+            </Typography>
+          </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Typography variant="h4">
                 Sign In
               </Typography>
+
               <TextField
                 id="standard-full-width"
                 label="Username"
@@ -65,6 +75,7 @@ export default function LoginPage (props) {
                   shrink: true,
                 }}
               />
+
               <TextField
                 autoComplete="current-password"
                 fullWidth
@@ -84,8 +95,11 @@ export default function LoginPage (props) {
                   ),
                 }}
               />
+
               <Button
                 color="secondary"
+                className={classes.button}
+                endIcon={<ArrowForwardIosIcon />}
                 fullWidth
                 onClick={() => {
                   auth.login(() => {
@@ -93,7 +107,6 @@ export default function LoginPage (props) {
                   })
                 }}
                 variant="contained"
-                endIcon={<ArrowForwardIosIcon />}
               >
                 Sign in
               </Button>
