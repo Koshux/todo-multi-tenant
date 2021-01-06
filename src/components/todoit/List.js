@@ -75,9 +75,15 @@ export default function CheckboxList(props) {
                 inputProps={{ 'aria-labelledby': labelId }}
               />
             </ListItemIcon>
-            <ListItemText id={labelId} primary={`Line item ${value.key}`} />
+            <ListItemText id={labelId} primary={`${value.body}`} />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="comments">
+              <IconButton
+                edge="end"
+                aria-label="comments"
+                onClick={() => {
+                  console.log('clicked delete button')
+                }}
+              >
                 <DeleteForeverIcon />
               </IconButton>
             </ListItemSecondaryAction>
