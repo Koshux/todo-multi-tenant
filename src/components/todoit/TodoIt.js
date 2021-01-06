@@ -1,6 +1,6 @@
 import React from 'react'
-import Input from './Input'
-import List from './List'
+import AddTask from './AddTask'
+import TaskList from './TaskList'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -17,16 +17,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TodoIt () {
   const classes = useStyles()
-  const [taskNote, setTaskNote] = React.useState('')
 
   return (
     <>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <Input
-            taskNote={taskNote}
-            setTaskNote={setTaskNote}
-          ></Input>
+          <AddTask></AddTask>
         </Paper>
 
         <Paper className={classes.paper}>
@@ -36,7 +32,7 @@ export default function TodoIt () {
 
           <Grid item xs={12}>
             <>
-              <List data={[
+              <TaskList data={[
                 {
                   key: 1,
                   complete: false,
@@ -65,7 +61,7 @@ export default function TodoIt () {
                   date: '2020/06/01T04:350000',
                   user: 'roger'
                 }
-              ]}></List>
+              ]}></TaskList>
             </>
           </Grid>
         </Paper>

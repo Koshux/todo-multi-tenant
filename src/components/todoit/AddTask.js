@@ -3,16 +3,17 @@ import Grid from '@material-ui/core/Grid'
 import SaveIcon from '@material-ui/icons/Save';
 import TextField from '@material-ui/core/TextField'
 
-export default function TodoIt (props) {
+export default function TodoIt () {
+  const [taskNote, setTaskNote] = React.useState('')
   function handleOnChange (event) {
-    props.setTaskNote(event.target.value)
+    setTaskNote(event.target.value)
   }
 
   return (
     <>
       <Grid item xs={10}>
         <TextField
-          defaultValue={props.taskNote}
+          defaultValue={taskNote}
           fullWidth
           id="username-full-width"
           onChange={handleOnChange}
@@ -22,7 +23,7 @@ export default function TodoIt (props) {
       <Grid item xs={2}>
         <Button
           color="secondary"
-          disabled={props.taskNote === ''}
+          disabled={taskNote === ''}
           fullWidth
           onClick={() => {
             console.log('Creating task')

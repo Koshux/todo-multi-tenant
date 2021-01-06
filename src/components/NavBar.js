@@ -36,7 +36,9 @@ export default function ButtonAppBar(props) {
                 props.history.push('/')
               })
             }}
-          >Logout</Button>
+          >
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
