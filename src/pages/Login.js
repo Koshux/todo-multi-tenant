@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import LockIcon from '@material-ui/icons/Lock'
-import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
@@ -19,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: '1em'
   },
-  paper: {
+  wrapper: {
     marginTop: '10em',
     padding: theme.spacing(2),
     textAlign: 'center',
@@ -102,11 +101,7 @@ export default function LoginPage (props) {
           </Grid>
 
           <Grid item xs={12}>
-            <Paper className={classes.paper}>
-              <Typography variant="h4">
-                Sign In
-              </Typography>
-
+            <div className={classes.wrapper}>
               {
                 error !== ''
                 ? <Typography variant="body1" color="secondary">
@@ -164,7 +159,7 @@ export default function LoginPage (props) {
               >
                 Sign in
               </Button>
-            </Paper>
+            </div>
           </Grid>
         </Grid>
       </div>
