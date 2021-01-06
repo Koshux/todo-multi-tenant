@@ -7,13 +7,13 @@ import Register from './pages/Register'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Container from '@material-ui/core/Container'
+// import Container from '@material-ui/core/Container'
 
 function App() {
   return (
     <Router>
       <CssBaseline />
-      <Container minwidth="sm" className="background">
+      {/* <Container minwidth="sm" className="background"> */}
         {/* <div className="App"> */}
           <Switch>
             <ProtectedRoute
@@ -37,7 +37,7 @@ function App() {
             />
           </Switch>
         {/* </div> */}
-      </Container>
+      {/* </Container> */}
     </Router>
   )
 }

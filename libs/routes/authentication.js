@@ -2,16 +2,16 @@
 
 const passport = require('passport')
 
-function userRoute (app) {
+function AuthenticationRoute (app) {
   app.use(passport.initialize())
   app.use(passport.session())
 
   app.use((req, res, next) => {
-    console.log('Session:', req.session)
-    console.log('User:', req.user)
+    console.log('Session created:', req.session)
+    console.log('User is:', req.user)
 
     next()
   })
 }
 
-module.exports = userRoute
+module.exports = AuthenticationRoute

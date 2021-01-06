@@ -10,6 +10,9 @@ const connection = mongoose.createConnection(process.env.MONGODB_URL, {
 })
 
 const NoteSchema = mongoose.Schema({
+  id: {
+    type: mongoose.Schema.Types.ObjectId
+  },
   title: {
     type: String,
     required: true
@@ -21,6 +24,10 @@ const NoteSchema = mongoose.Schema({
   body: {
     type: String,
     required: true
+  },
+  author: {
+    type: String,
+    ref: "User"
   }
 })
 

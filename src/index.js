@@ -5,12 +5,20 @@ import App from './App'
 
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const theme = createMuiTheme({
-  overrides: {
-    MuiTypography: {
-      h1: {
-        'font-family': 'BitterPro'
-      }
-    }
+  typography: {
+    fontFamily: [
+      'BitterPro',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"'
+    ]
   }
 })
 

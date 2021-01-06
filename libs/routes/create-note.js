@@ -3,10 +3,10 @@
 const { Note } = require('../models/note').models
 const { isAuth } = require('../auth/middleware')
 
-function createRoute (router) {
+function CreateRoute (router) {
   router.post('/todo', isAuth, (req, res, next) => {
-    const { author, date, title} = req.body.data
-    const data = { author, date, title }
+    const { body, date, title, username } = req.body.data
+    const data = { body, date, title, username }
     Note.save(data, (err, note) => {
       if (err) {
         next(err)
@@ -14,11 +14,13 @@ function createRoute (router) {
 
       console.log('Created a note', note)
       res.json({
-        title: 'Notes',
-        note: note
+        date: note.date,
+        note: note.body,
+        title: note.title,
+        username: req.user.username
       })
     })
   })
 }
 
-module.exports = createRoute
+module.exports = CreateRoute

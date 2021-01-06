@@ -12,8 +12,6 @@ function usersRoute (router) {
 
 function loginRoute (router) {
   router.post('/login', passport.authenticate('local'), (req, res) => {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
     console.log('Login, hello:', req.user)
     res.json({ message: 'Successfully authenticated!' })
   })

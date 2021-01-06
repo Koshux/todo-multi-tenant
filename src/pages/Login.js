@@ -59,6 +59,7 @@ export default function LoginPage (props) {
   function handleUsernameKeyUp (event) {
     if (error !== '') setError('')
 
+    console.log('event 1', event.target.value)
     setCredentials({
       username: event.target.value,
       password: credentials.password
@@ -69,6 +70,7 @@ export default function LoginPage (props) {
 
   function handlePasswordKeyUp (event) {
     if (error !== '') setError('')
+    console.log('event 2', event.target.value)
 
     setCredentials({
       username: credentials.username,
@@ -127,7 +129,7 @@ export default function LoginPage (props) {
                 }}
                 label="Username"
                 margin="normal"
-                onKeyUp={handleUsernameKeyUp}
+                onChange={handleUsernameKeyUp}
                 placeholder="Enter your username"
               />
 
@@ -147,7 +149,7 @@ export default function LoginPage (props) {
                 }}
                 label="Password"
                 margin="normal"
-                onKeyUp={handlePasswordKeyUp}
+                onChange={handlePasswordKeyUp}
                 placeholder="Enter your password"
                 type="password"
               />
