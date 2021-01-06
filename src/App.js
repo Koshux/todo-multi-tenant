@@ -1,7 +1,7 @@
 import './App.css'
 import Home from './pages/Home'
 import Login from './pages/Login'
-import ProtectedRoute from './components/protected-route'
+import ProtectedRoute from './components/ProtectedRoute'
 import React from 'react'
 import Register from './pages/Register'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
