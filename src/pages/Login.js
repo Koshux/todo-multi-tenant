@@ -1,7 +1,6 @@
 import React from 'react'
 import auth from '../components/auth'
 import Typography from '@material-ui/core/Typography'
-// import Card from '../components/Card'
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
@@ -31,9 +30,56 @@ const useStyles = makeStyles((theme) => ({
 export default function LoginPage (props) {
   const classes = useStyles()
 
+  const [error, setError] = React.useState('')
+  const [credentials, setCredentials] = React.useState({
+    username: null,
+    password: null
+  })
+
+  React.useEffect(() => {
+    if (auth.isAuthenticated() && error === '') {
+      setCredentials({ username: null, password: null })
+    }
+  }, [error])
+
+  function login () {
+    auth.login(
+      setError,
+      { username: credentials.username, password: credentials.password },
+      () => { props.history.push('/home') }
+    )
+  }
+
+  function tryLogin (event) {
+    if (event.keyCode === 13) {
+      login()
+    }
+  }
+
+  function handleUsernameKeyUp (event) {
+    if (error !== '') setError('')
+
+    setCredentials({
+      username: event.target.value,
+      password: credentials.password
+    })
+
+    tryLogin(event)
+  }
+
+  function handlePasswordKeyUp (event) {
+    if (error !== '') setError('')
+
+    setCredentials({
+      username: credentials.username,
+      password: event.target.value
+    })
+
+    tryLogin(event)
+  }
+
   return (
     <React.Fragment>
-
       <div className={classes.root}>
         <Grid
           container
@@ -52,18 +98,26 @@ export default function LoginPage (props) {
               Your personal productivity zone.
             </Typography>
           </Grid>
+
           <Grid item xs={12}>
             <Paper className={classes.paper}>
               <Typography variant="h4">
                 Sign In
               </Typography>
 
+              {
+                error !== ''
+                ? <Typography variant="body1" color="secondary">
+                    Incorrect username or password, please try again!
+                  </Typography>
+                : null
+              }
+
               <TextField
-                id="standard-full-width"
-                label="Username"
-                placeholder="Enter your username"
+                defaultValue={credentials.username}
                 fullWidth
-                margin="normal"
+                id="username-full-width"
+                InputLabelProps={{ shrink: true }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">
@@ -71,29 +125,31 @@ export default function LoginPage (props) {
                     </InputAdornment>
                   ),
                 }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
+                label="Username"
+                margin="normal"
+                onKeyUp={handleUsernameKeyUp}
+                placeholder="Enter your username"
               />
 
               <TextField
                 autoComplete="current-password"
+                defaultValue={credentials.password}
                 fullWidth
-                id="standard-full-width"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                label="Password"
-                margin="normal"
-                placeholder="Enter your password"
-                type="password"
+                id="password-full-width"
+                InputLabelProps={{ shrink: true }}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="start">
                       <LockIcon />
                     </InputAdornment>
                   ),
+                  maxLength: 35
                 }}
+                label="Password"
+                margin="normal"
+                onKeyUp={handlePasswordKeyUp}
+                placeholder="Enter your password"
+                type="password"
               />
 
               <Button
@@ -101,11 +157,7 @@ export default function LoginPage (props) {
                 className={classes.button}
                 endIcon={<ArrowForwardIosIcon />}
                 fullWidth
-                onClick={() => {
-                  auth.login(() => {
-                    props.history.push('/home')
-                  })
-                }}
+                onClick={() => {login()}}
                 variant="contained"
               >
                 Sign in

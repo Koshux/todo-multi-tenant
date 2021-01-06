@@ -3,7 +3,8 @@ class Auth {
     this.authenticated = false
   }
 
-  login (cb) {
+  login (setError, credentials, cb) {
+    const { username, password } = credentials
     const options = {
       method: 'POST',
       mode: 'cors',
@@ -12,7 +13,7 @@ class Auth {
       headers: { 'Content-Type': 'application/json' },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify({ username: 'roger2', password: '123' })
+      body: JSON.stringify({ username, password })
     }
 
     fetch('/.netlify/functions/server/login', options)
@@ -24,6 +25,7 @@ class Auth {
       })
       .catch(err => {
         console.error(err)
+        setError(err)
       })
   }
 
