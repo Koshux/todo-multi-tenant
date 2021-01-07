@@ -19,7 +19,6 @@ class Auth {
     fetch('/.netlify/functions/server/login', options)
       .then(resp => resp.json())
       .then(data => {
-        console.log('login data', data)
         this.authenticated = true
         cb()
       })
@@ -33,7 +32,6 @@ class Auth {
     fetch('/.netlify/functions/server/logout')
       .then(resp => resp.json())
       .then(data => {
-        console.log('logout data', data)
         this.authenticated = false
         cb()
       })
@@ -58,7 +56,6 @@ class Auth {
     fetch('/.netlify/functions/server/register', options)
       .then(resp => resp.json())
       .then(data => {
-        console.log('register data', data)
         this.authenticated = true
         cb()
       })

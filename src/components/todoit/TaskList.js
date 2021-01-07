@@ -30,7 +30,6 @@ export default function CheckboxList(props) {
   function getData () {
     setIsLoading(true)
     task.get(data => {
-      console.log('have we tasks?', data)
       setTasksHandler(data.map((item, key) => {
         return {
           completed: item.completed,
@@ -64,8 +63,6 @@ export default function CheckboxList(props) {
 
   function deleteTask (id) {
     props.task.delete(id, (data) => {
-      console.log('Deleted task:', data)
-      // props.setTasksHandler(data)
       getData()
     })
   }
@@ -113,10 +110,7 @@ export default function CheckboxList(props) {
                 aria-label="comments"
                 edge="end"
                 disabled={isLoading}
-                onClick={() => {
-                  console.log('task:', value)
-                  deleteTask(value.id)
-                }}
+                onClick={() => { deleteTask(value.id) }}
               >
                 <DeleteForeverIcon />
               </IconButton>

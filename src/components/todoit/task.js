@@ -1,7 +1,5 @@
 class Task {
-  constructor (props) {
-    console.log('Task props', props)
-  }
+  constructor (props) {}
 
   get (cb) {
     const options = {
@@ -17,7 +15,6 @@ class Task {
     fetch('/.netlify/functions/server/todo', options)
       .then(resp => resp.json())
       .then(data => {
-        console.log('GET notes data', data)
         if (cb) cb(data)
       })
       .catch(err => {
@@ -34,13 +31,11 @@ class Task {
       headers: { 'Content-Type': 'application/json' },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      // body: JSON.stringify({ id: id })
     }
 
     fetch(`/.netlify/functions/server/todo/${id}`, options)
       .then(resp => resp.json())
       .then(data => {
-        console.log('Deleted note', data)
         cb(data)
       })
       .catch(err => {
@@ -64,7 +59,6 @@ class Task {
     fetch('/.netlify/functions/server/todo', options)
       .then(resp => resp.json())
       .then(data => {
-        console.log('Created note:', data)
         cb()
       })
       .catch(err => {

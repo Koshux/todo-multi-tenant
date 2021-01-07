@@ -15,7 +15,6 @@ export default function AddTask (props) {
       setTaskNote('')
 
       props.task.get(data => {
-        console.log('have we tasks?', data)
         props.setTasksHandler(data.map((item, key) => {
           return {...item, key}
         }))

@@ -46,7 +46,6 @@ export default function RegisterPage (props) {
       setError,
       { username: credentials.username, password: credentials.password },
       () => {
-        console.log('register cb:', error)
         error !== ''
           ? props.history.push('/register')
           : props.history.push('/')
@@ -63,7 +62,6 @@ export default function RegisterPage (props) {
   function handleUsernameKeyUp (event) {
     if (error !== '') setError('')
 
-    console.log('event 1', event.target.value)
     setCredentials({
       username: event.target.value,
       password: credentials.password
@@ -74,7 +72,6 @@ export default function RegisterPage (props) {
 
   function handlePasswordKeyUp (event) {
     if (error !== '') setError('')
-    console.log('event 2', event.target.value)
 
     setCredentials({
       username: credentials.username,
