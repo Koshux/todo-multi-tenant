@@ -1,5 +1,6 @@
 import React from 'react'
 import AddTask from './AddTask'
+import task from './task'
 import TaskList from './TaskList'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
@@ -17,12 +18,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TodoIt () {
   const classes = useStyles()
+  const [tasks, setTasks] = React.useState([])
+
+  function setTasksHandler (newTasks) {
+    setTasks(newTasks)
+  }
 
   return (
     <>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
-          <AddTask></AddTask>
+          <AddTask
+            task={task}
+            setTasksHandler={setTasksHandler}
+          ></AddTask>
         </Paper>
 
         <Paper className={classes.paper}>
@@ -32,36 +41,11 @@ export default function TodoIt () {
 
           <Grid item xs={12}>
             <>
-              <TaskList data={[
-                {
-                  key: 1,
-                  complete: false,
-                  body: 'This is a TODOit note to fill up the body.',
-                  date: '2020/06/01T04:350000',
-                  user: 'roger'
-                },
-                {
-                  key: 2,
-                  complete: true,
-                  body: 'This is another note that has to occupy the correct space.',
-                  date: '2020/06/01T04:350000',
-                  user: 'roger'
-                },
-                {
-                  key: 3,
-                  complete: false,
-                  body: 'I am so tired that I am just plainlessly writing this.',
-                  date: '2020/06/01T04:350000',
-                  user: 'roger'
-                },
-                {
-                  key: 4,
-                  complete: true,
-                  body: 'Turns out, this note is complete. Oh my days.',
-                  date: '2020/06/01T04:350000',
-                  user: 'roger'
-                }
-              ]}></TaskList>
+              <TaskList
+                task={task}
+                tasks={tasks}
+                setTasksHandler={setTasksHandler}
+              ></TaskList>
             </>
           </Grid>
         </Paper>

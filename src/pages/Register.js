@@ -1,5 +1,4 @@
 import React from 'react'
-import auth from '../components/auth'
 import Typography from '@material-ui/core/Typography'
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
@@ -8,8 +7,9 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import LockIcon from '@material-ui/icons/Lock'
-import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,16 +36,21 @@ export default function RegisterPage (props) {
   })
 
   React.useEffect(() => {
-    if (auth.isAuthenticated() && error === '') {
+    if (props.auth.isAuthenticated() && error === '') {
       setCredentials({ username: null, password: null })
     }
-  }, [error])
+  }, [props.auth, error])
 
   function register () {
-    auth.register(
+    props.auth.register(
       setError,
       { username: credentials.username, password: credentials.password },
-      () => { props.history.push('/') }
+      () => {
+        console.log('register cb:', error)
+        error !== ''
+          ? props.history.push('/register')
+          : props.history.push('/')
+      }
     )
   }
 
@@ -105,7 +110,7 @@ export default function RegisterPage (props) {
               {
                 error !== ''
                 ? <Typography variant="body1" color="secondary">
-                    Incorrect username or password, please try again!
+                    Something went wrong, please try again!
                   </Typography>
                 : null
               }
@@ -124,7 +129,7 @@ export default function RegisterPage (props) {
                 }}
                 label="Username"
                 margin="normal"
-                onChange={handleUsernameKeyUp}
+                onKeyUp={handleUsernameKeyUp}
                 placeholder="Enter your username"
               />
 
@@ -144,7 +149,7 @@ export default function RegisterPage (props) {
                 }}
                 label="Password"
                 margin="normal"
-                onChange={handlePasswordKeyUp}
+                onKeyUp={handlePasswordKeyUp}
                 placeholder="Enter your password"
                 type="password"
               />
@@ -152,6 +157,12 @@ export default function RegisterPage (props) {
               <Button
                 color="secondary"
                 className={classes.button}
+                disabled={
+                  credentials.password == null ||
+                  credentials.password === '' ||
+                  credentials.username == null ||
+                  credentials.username === ''
+                }
                 endIcon={<ArrowForwardIosIcon />}
                 fullWidth
                 onClick={() => {register()}}
@@ -159,6 +170,11 @@ export default function RegisterPage (props) {
               >
                 Register
               </Button>
+              <Link to="/">
+                <Typography variant="subtitle2" align="center">
+                Sign in here
+                </Typography>
+              </Link>
             </div>
           </Grid>
         </Grid>

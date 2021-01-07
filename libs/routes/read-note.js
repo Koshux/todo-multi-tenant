@@ -26,10 +26,11 @@ function findOneRoute (router) {
 
       console.log('Found individual note:', note)
       res.json({
+        id: note._id,
         date: note.date,
         note: note.body,
         title: note.title,
-        username: req.user.username
+        author: req.user.username
       })
     })
   })
@@ -38,18 +39,21 @@ function findOneRoute (router) {
 function findAllRoute (router) {
   router.get('/todo', isAuth, (req, res, next) => {
     console.log('logged in user:', req.user)
-    Note.find({ user: req.user.username }, (err, notes) => {
+    Note.find({ author: req.user.username }, (err, notes) => {
       if (err) {
         next(err)
       }
 
       console.log('Found all notes:', notes)
-      res.json({
-        date: note.date,
-        note: note.body,
-        title: note.title,
-        username: req.user.username
-      })
+      res.json(notes.map(note => {
+        return {
+          author: req.user.username,
+          body: note.body,
+          date: note.date,
+          id: note._id,
+          title: note.title
+        }
+      }))
     })
   })
 }

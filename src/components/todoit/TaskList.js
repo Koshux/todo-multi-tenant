@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Checkbox from '@material-ui/core/Checkbox'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import IconButton from '@material-ui/core/IconButton'
@@ -24,6 +24,30 @@ const useStyles = makeStyles((theme) => ({
 export default function CheckboxList(props) {
   const classes = useStyles()
   const [checked, setChecked] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(false)
+  const { task, setTasksHandler } = props
+
+  function getData () {
+    setIsLoading(true)
+    task.get(data => {
+      console.log('have we tasks?', data)
+      setTasksHandler(data.map((item, key) => {
+        return {
+          completed: item.completed,
+          body: item.body,
+          date: item.date,
+          id: item.id,
+          key: key,
+          author: item.author
+        }
+      }))
+      setIsLoading(false)
+    })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value)
@@ -38,7 +62,15 @@ export default function CheckboxList(props) {
     setChecked(newChecked)
   }
 
-  if (props.data == null) {
+  function deleteTask (id) {
+    props.task.delete(id, (data) => {
+      console.log('Deleted task:', data)
+      // props.setTasksHandler(data)
+      getData()
+    })
+  }
+
+  if (props.tasks == null) {
     return (
       <>
         <Typography className={classes.heading} variant="body1">
@@ -54,7 +86,7 @@ export default function CheckboxList(props) {
 
   return (
     <List className={classes.root}>
-      {props.data.map((value) => {
+      {props.tasks.map((value) => {
         const labelId = `checkbox-list-label-${value.key}`
 
         return (
@@ -78,10 +110,12 @@ export default function CheckboxList(props) {
             <ListItemText id={labelId} primary={`${value.body}`} />
             <ListItemSecondaryAction>
               <IconButton
-                edge="end"
                 aria-label="comments"
+                edge="end"
+                disabled={isLoading}
                 onClick={() => {
-                  console.log('clicked delete button')
+                  console.log('task:', value)
+                  deleteTask(value.id)
                 }}
               >
                 <DeleteForeverIcon />

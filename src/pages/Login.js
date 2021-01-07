@@ -1,5 +1,4 @@
 import React from 'react'
-import auth from '../components/auth'
 import Typography from '@material-ui/core/Typography'
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
@@ -8,6 +7,7 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import LockIcon from '@material-ui/icons/Lock'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LoginPage (props) {
   const classes = useStyles()
-
   const [error, setError] = React.useState('')
   const [credentials, setCredentials] = React.useState({
     username: null,
@@ -36,13 +35,13 @@ export default function LoginPage (props) {
   })
 
   React.useEffect(() => {
-    if (auth.isAuthenticated() && error === '') {
+    if (props.auth.isAuthenticated() && error === '') {
       setCredentials({ username: null, password: null })
     }
-  }, [error])
+  }, [props.auth, error])
 
   function login () {
-    auth.login(
+    props.auth.login(
       setError,
       { username: credentials.username, password: credentials.password },
       () => { props.history.push('/home') }
@@ -50,6 +49,7 @@ export default function LoginPage (props) {
   }
 
   function tryLogin (event) {
+    console.log('Pressed:', event.keyCode)
     if (event.keyCode === 13) {
       login()
     }
@@ -124,7 +124,7 @@ export default function LoginPage (props) {
                 }}
                 label="Username"
                 margin="normal"
-                onChange={handleUsernameKeyUp}
+                onKeyUp={handleUsernameKeyUp}
                 placeholder="Enter your username"
               />
 
@@ -144,7 +144,7 @@ export default function LoginPage (props) {
                 }}
                 label="Password"
                 margin="normal"
-                onChange={handlePasswordKeyUp}
+                onKeyUp={handlePasswordKeyUp}
                 placeholder="Enter your password"
                 type="password"
               />
@@ -152,6 +152,12 @@ export default function LoginPage (props) {
               <Button
                 color="secondary"
                 className={classes.button}
+                disabled={
+                  credentials.password == null ||
+                  credentials.password === '' ||
+                  credentials.username == null ||
+                  credentials.username === ''
+                }
                 endIcon={<ArrowForwardIosIcon />}
                 fullWidth
                 onClick={() => {login()}}
@@ -159,6 +165,11 @@ export default function LoginPage (props) {
               >
                 Sign in
               </Button>
+              <Link to="/register">
+                <Typography variant="subtitle2" align="center">
+                Register here
+                </Typography>
+              </Link>
             </div>
           </Grid>
         </Grid>

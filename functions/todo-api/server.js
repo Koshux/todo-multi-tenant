@@ -2,7 +2,6 @@
 
 const bodyParser = require('body-parser')
 const express = require('express')
-const path = require('path')
 const serverless = require('serverless-http')
 const session = require('express-session')
 const setupRoutes = require('../../libs/routes/index')
@@ -22,7 +21,7 @@ const sessionStore = new MongoStore({
 
 app.use(session({
   secret: process.env.SECRET,
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   store: sessionStore,
   cookie: {

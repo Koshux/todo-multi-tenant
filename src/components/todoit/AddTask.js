@@ -4,21 +4,43 @@ import Grid from '@material-ui/core/Grid'
 import SaveIcon from '@material-ui/icons/Save';
 import TextField from '@material-ui/core/TextField'
 
-export default function TodoIt () {
+export default function AddTask (props) {
   const [taskNote, setTaskNote] = React.useState('')
+
+  function saveNote () {
+    props.task.save({
+      body: taskNote,
+      title: 'test'
+    }, () => {
+      setTaskNote('')
+
+      props.task.get(data => {
+        console.log('have we tasks?', data)
+        props.setTasksHandler(data.map((item, key) => {
+          return {...item, key}
+        }))
+      })
+    })
+  }
+
   function handleOnChange (event) {
     setTaskNote(event.target.value)
+  }
+
+  function handleOnKeyUp (event) {
+    if (event.keyCode === 13) saveNote()
   }
 
   return (
     <>
       <Grid item xs={10}>
         <TextField
-          defaultValue={taskNote}
           fullWidth
           id="username-full-width"
           onChange={handleOnChange}
+          onKeyUp={handleOnKeyUp}
           placeholder="Type your TODOit here..."
+          value={taskNote}
         />
       </Grid>
       <Grid item xs={2}>
@@ -26,13 +48,12 @@ export default function TodoIt () {
           color="secondary"
           disabled={taskNote === ''}
           fullWidth
-          onClick={() => {
-            console.log('Creating task')
-            // requests.createTask()
-          }}
+          onClick={() => { saveNote() }}
           startIcon={<SaveIcon />}
           variant="contained"
-        >Add</Button>
+        >
+          Add
+        </Button>
       </Grid>
     </>
   )

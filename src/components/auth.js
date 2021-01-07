@@ -42,7 +42,8 @@ class Auth {
       })
   }
 
-  register (cb) {
+  register (setError, credentials, cb) {
+    const { username, password } = credentials
     const options = {
       method: 'POST',
       mode: 'cors',
@@ -51,7 +52,7 @@ class Auth {
       headers: { 'Content-Type': 'application/json' },
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
-      body: JSON.stringify({ username: 'roger', password: '123' })
+      body: JSON.stringify({ username, password })
     }
 
     fetch('/.netlify/functions/server/register', options)
@@ -63,6 +64,7 @@ class Auth {
       })
       .catch(err => {
         console.error(err)
+        setError(err)
       })
   }
 

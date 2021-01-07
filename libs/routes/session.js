@@ -27,21 +27,35 @@ function logoutRoute (router) {
 
 function registerRoute (router) {
   router.post('/register', (req, res, next) => {
-    const { hash, salt } = generatePassword(req.body.password)
+    const { password, username } = req.body
+    if (username == null || username == '' ||
+      password == null || password === '') {
+        res.status(400).json({
+          message: 'You must provide both username and password to register.'
+        })
+    }
+
+    const { hash, salt } = generatePassword(password)
     const newUser = new User({
       admin: true,
       hash,
       salt,
-      username: req.body.username
+      username: username
     })
 
-    newUser.save().then(user => {
-      console.log('Created a new user:', user)
-    }).catch(err => {
-      console.error(err)
-    })
+    User.count({ username: username }, (err, count) => {
+      if (count > 0) res.status(401).json({ message: 'Failed registration. '})
 
-    res.redirect('/')
+      newUser.save().then(user => {
+        console.log('Created a new user:', user)
+        res.json({ message: "Successfully registered!" })
+      }).catch(err => {
+        console.error(err)
+        res.status(401).json({
+          message: 'Something went wrong during registration.'
+        })
+      })
+    })
   })
 }
 
