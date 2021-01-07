@@ -46,7 +46,6 @@ export default function AddTask (props) {
         <Button
           color="secondary"
           disabled={taskNote === ''}
-          fullWidth
           onClick={() => { saveNote() }}
           startIcon={<SaveIcon />}
           variant="contained"

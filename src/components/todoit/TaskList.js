@@ -44,6 +44,7 @@ export default function CheckboxList(props) {
   }, [task, setTasksHandler])
 
   useEffect(() => {
+    console.log('Use Effect man!')
     getData()
   }, [getData])
 
