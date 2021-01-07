@@ -26,22 +26,20 @@ consumed.  Users and tasks are stored within MongoDB using MongooseJS for multi-
 
 ### Architecture
 Download `Untitled Diagram.drawio` (I know but it didn't let me rename it from draw.io) from the repository and go to https://draw.io. Load the diagram to preview.
-
-       
+  
 API routing:
 1. /login - POST
 2. /logout - GET
 3. /register - POST
 4. /todo - GET, POST, DELETE
 
-Frontend routing:
-1. / 
-2. /home
-3. /register
-      
-
 ### Design
 Download `web-app-diagram.drawio` from the repository and go to https://draw.io. Load the diagram to preview all page and functionality designs.
+
+UI routing:
+1. / - Login page
+2. /home - Home page
+3. /register - Register page
 
 ### Authentication
 Basic authentication is implemented using PassportJS LocalStrategy.  This could be further extended to use JWT tokens however for simplicity,
