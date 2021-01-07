@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useCallback } from 'react'
 import Checkbox from '@material-ui/core/Checkbox'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import IconButton from '@material-ui/core/IconButton'
@@ -26,8 +26,7 @@ export default function CheckboxList(props) {
   const [checked, setChecked] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(false)
   const { task, setTasksHandler } = props
-
-  function getData () {
+  const getData = useCallback(() => {
     setIsLoading(true)
     task.get(data => {
       setTasksHandler(data.map((item, key) => {
@@ -42,11 +41,11 @@ export default function CheckboxList(props) {
       }))
       setIsLoading(false)
     })
-  }
+  }, [task, setTasksHandler])
 
   useEffect(() => {
     getData()
-  }, [])
+  }, [getData])
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value)

@@ -1,6 +1,4 @@
 class Task {
-  constructor (props) {}
-
   get (cb) {
     const options = {
       method: 'GET',
