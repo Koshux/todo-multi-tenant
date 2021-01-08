@@ -1,5 +1,5 @@
 # Your own nifty TODO app! [![Netlify Status](https://api.netlify.com/api/v1/badges/ed726981-293e-406b-951a-de7a8d982df6/deploy-status)](https://app.netlify.com/sites/todo-app-lp/deploys)
-This multi-tenant web-app is hosted on Netlify here: https://todo-app-lp.netlify.app/.
+A serverless multi-tenant web-app with basic authentication: https://todo-app-lp.netlify.app/.
 
 It allows different consumers to concurrently login, customise and utilise the features of this nifty TODO app.
 
