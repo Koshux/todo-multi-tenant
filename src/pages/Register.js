@@ -28,22 +28,28 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RegisterPage (props) {
   const classes = useStyles()
-
   const [error, setError] = React.useState('')
   const [credentials, setCredentials] = React.useState({
     username: null,
     password: null
   })
 
+  // HLC reference to display the error.
+  function setErrorHandler (error) {
+    setError(error)
+  }
+
+  // Reset the credentials when the registration is successful.
   React.useEffect(() => {
     if (props.auth.isAuthenticated() && error === '') {
       setCredentials({ username: null, password: null })
     }
   }, [props.auth, error])
 
+  // Register with the webapp.
   function register () {
     props.auth.register(
-      setError,
+      setErrorHandler,
       { username: credentials.username, password: credentials.password },
       () => {
         error !== ''
@@ -53,13 +59,16 @@ export default function RegisterPage (props) {
     )
   }
 
+  // Try register with the webapp if 'ENTER' is pressed.
   function tryRegister (event) {
     if (event.keyCode === 13) {
       register()
     }
   }
 
+  // Logic to store the username credentials.
   function handleUsernameKeyUp (event) {
+    // Clear error when re-typing.
     if (error !== '') setError('')
 
     setCredentials({
@@ -70,7 +79,9 @@ export default function RegisterPage (props) {
     tryRegister(event)
   }
 
+  // Logic to store the password credentials.
   function handlePasswordKeyUp (event) {
+    // Clear error when re-typing.
     if (error !== '') setError('')
 
     setCredentials({

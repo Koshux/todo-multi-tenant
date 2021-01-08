@@ -34,27 +34,37 @@ export default function LoginPage (props) {
     password: null
   })
 
+  // HLC reference to display the error.
+  function setErrorHandler (error) {
+    setError(error)
+  }
+
+  // Reset the credentials when the login is successful.
   React.useEffect(() => {
     if (props.auth.isAuthenticated() && error === '') {
       setCredentials({ username: null, password: null })
     }
   }, [props.auth, error])
 
+  // Log into the webapp.
   function login () {
     props.auth.login(
-      setError,
+      setErrorHandler,
       { username: credentials.username, password: credentials.password },
       () => { props.history.push('/home') }
     )
   }
 
+  // Try log into the webapp if 'ENTER' is pressed.
   function tryLogin (event) {
     if (event.keyCode === 13) {
       login()
     }
   }
 
+  // Logic to store the username credentials.
   function handleUsernameKeyUp (event) {
+    // Clear error when re-typing.
     if (error !== '') setError('')
 
     setCredentials({
@@ -65,7 +75,9 @@ export default function LoginPage (props) {
     tryLogin(event)
   }
 
+  // Logic to store the password credentials.
   function handlePasswordKeyUp (event) {
+    // Clear error when re-typing.
     if (error !== '') setError('')
 
     setCredentials({

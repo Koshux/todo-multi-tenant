@@ -23,12 +23,23 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CheckboxList(props) {
   const classes = useStyles()
-  const [checked, setChecked] = React.useState([])
-  const [isLoading, setIsLoading] = React.useState(false)
   const { task, setTasksHandler } = props
+  const [checked, setChecked] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState()
+
+  // Memoize the GET /todo request since it is used in useEffect.
   const getData = useCallback(() => {
+    // Request started.
     setIsLoading(true)
+
+    // Retrieve the TODOits - GET /todo.
     task.get(data => {
+      if (data == null) {
+        setIsLoading(false)
+        return
+      }
+
+      // Update the TODOits list on screen.
       setTasksHandler(data.map((item, key) => {
         return {
           completed: item.completed,
@@ -39,15 +50,19 @@ export default function CheckboxList(props) {
           author: item.author
         }
       }))
+
+      // Request has completed.
       setIsLoading(false)
     })
-  }, [task, setIsLoading, setTasksHandler])
+  }, [setTasksHandler, setIsLoading, task])
 
+  // Load the data everytime the component is mounted.
   useEffect(() => {
-    console.log('Use Effect man!')
     getData()
-  }, [setIsLoading])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
+  // Checkbox toggle button state logic.
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value)
     const newChecked = [...checked]
@@ -61,13 +76,19 @@ export default function CheckboxList(props) {
     setChecked(newChecked)
   }
 
+  /**
+   * Delete the TODOit.
+   * @param {String} The OBJECT_ID for the task in MongoDB.
+   */
   function deleteTask (id) {
     props.task.delete(id, (data) => {
       getData()
     })
   }
 
-  if (props.tasks == null) {
+  // No TODOits to show.
+  console.log('props.tasks list', props.tasks)
+  if (props.tasks == null || props.tasks.length === 0) {
     return (
       <>
         <Typography className={classes.heading} variant="body1">
@@ -104,7 +125,9 @@ export default function CheckboxList(props) {
                 inputProps={{ 'aria-labelledby': labelId }}
               />
             </ListItemIcon>
+
             <ListItemText id={labelId} primary={`${value.body}`} />
+
             <ListItemSecondaryAction>
               <IconButton
                 aria-label="comments"

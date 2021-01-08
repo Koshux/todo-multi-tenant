@@ -35,6 +35,7 @@ function registerRoute (router) {
         })
     }
 
+    // Generate password.
     const { hash, salt } = generatePassword(password)
     const newUser = new User({
       admin: true,
@@ -43,9 +44,12 @@ function registerRoute (router) {
       username: username
     })
 
+    // Check if the user exists.
     User.count({ username: username }, (err, count) => {
+      // User exists, fail registration.
       if (count > 0) res.status(401).json({ message: 'Failed registration. '})
 
+      // Create user.
       newUser.save().then(user => {
         console.log('Created a new user:', user)
         res.json({ message: "Successfully registered!" })

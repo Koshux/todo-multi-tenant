@@ -12,7 +12,6 @@ function CreateRoute (router) {
       author: req.user.username
     })
 
-    console.log('Trying to persist note:', note)
     note.save().then(note => {
       console.log('Created a note', note)
       res.json({

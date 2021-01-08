@@ -20,6 +20,7 @@ export default function TodoIt () {
   const classes = useStyles()
   const [tasks, setTasks] = React.useState([])
 
+  // HLC reference to update the TODOit list.
   function setTasksHandler (newTasks) {
     setTasks(newTasks)
   }

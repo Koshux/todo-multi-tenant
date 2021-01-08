@@ -24,7 +24,6 @@ function findOneRoute (router) {
         next(err)
       }
 
-      console.log('Found individual note:', note)
       res.json({
         id: note._id,
         date: note.date,
@@ -38,13 +37,11 @@ function findOneRoute (router) {
 
 function findAllRoute (router) {
   router.get('/todo', isAuth, (req, res, next) => {
-    console.log('logged in user:', req.user)
     Note.find({ author: req.user.username }, (err, notes) => {
       if (err) {
         next(err)
       }
 
-      console.log('Found all notes:', notes)
       res.json(notes.map(note => {
         return {
           author: req.user.username,

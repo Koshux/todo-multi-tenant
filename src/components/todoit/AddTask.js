@@ -7,13 +7,16 @@ import TextField from '@material-ui/core/TextField'
 export default function AddTask (props) {
   const [taskNote, setTaskNote] = React.useState('')
 
+  // Performs a POST /todo to save the TODOit.
   function saveNote () {
     props.task.save({
       body: taskNote,
       title: 'test'
     }, () => {
+      // Reset the TODOit textfield.
       setTaskNote('')
 
+      // Retrieve & update the TODOit list.
       props.task.get(data => {
         props.setTasksHandler(data.map((item, key) => {
           return {...item, key}
@@ -22,10 +25,12 @@ export default function AddTask (props) {
     })
   }
 
+  // Update the TODOit note with the textfield content.
   function handleOnChange (event) {
     setTaskNote(event.target.value)
   }
 
+  // Fire POST /todo if 'ENTER' is pressed.
   function handleOnKeyUp (event) {
     if (event.keyCode === 13) saveNote()
   }
