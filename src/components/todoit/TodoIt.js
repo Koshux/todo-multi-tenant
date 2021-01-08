@@ -33,21 +33,19 @@ export default function TodoIt () {
             setTasksHandler={setTasksHandler}
           ></AddTask>
         </Paper>
+      </Grid>
 
+      <Grid item xs={12}>
         <Paper className={classes.paper}>
           <Typography variant="h4">
             TODOits
           </Typography>
 
-          <Grid item xs={12}>
-            <>
-              <TaskList
-                task={task}
-                tasks={tasks}
-                setTasksHandler={setTasksHandler}
-              ></TaskList>
-            </>
-          </Grid>
+          <TaskList
+            task={task}
+            tasks={tasks}
+            setTasksHandler={setTasksHandler}
+          ></TaskList>
         </Paper>
       </Grid>
     </>

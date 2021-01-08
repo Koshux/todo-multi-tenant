@@ -41,12 +41,12 @@ export default function CheckboxList(props) {
       }))
       setIsLoading(false)
     })
-  }, [task, setTasksHandler])
+  }, [task, setIsLoading, setTasksHandler])
 
   useEffect(() => {
     console.log('Use Effect man!')
     getData()
-  }, [getData])
+  }, [setIsLoading])
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value)

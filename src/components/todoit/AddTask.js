@@ -32,6 +32,7 @@ export default function AddTask (props) {
 
   return (
     <>
+    <Grid container spacing={1} alignItems="flex-end">
       <Grid item xs={10}>
         <TextField
           fullWidth
@@ -52,6 +53,7 @@ export default function AddTask (props) {
         >
           Add
         </Button>
+        </Grid>
       </Grid>
     </>
   )
