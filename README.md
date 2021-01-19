@@ -3,8 +3,19 @@ A serverless multi-tenant web-app with basic authentication: https://todo-app-lp
 
 It allows different consumers to concurrently login, customise and utilise the features of this nifty TODO app.
 
-## Commands
-### Local development
+## Usage
+### Environment
+It is important to create an `.env` file which NodeJS with the following properties:
+
+- `MONGODB_URL`
+- `SECRET`
+
+### Install
+Before starting to work locally, first you must install the `node_modules.
+
+`npm install`
+
+### Running
 To start the local development servers, paste the following command:
 
 `npm run start`
